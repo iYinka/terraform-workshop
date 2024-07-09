@@ -5,17 +5,18 @@ variable "REGION" {
 }
 
 variable "AMI" {
-  #  type = "map"
-
+   type = map(string)
   default = {
     "us-east-1" = "ami-0440d3b780d96b29d"
   }
 }
 
 variable "INSTANCE_COUNT" {
+  type =  string
   default = "1"
 }
 
 variable "INSTANCE_TYPE" {
+  type = string
   default = "t2.micro"
 }

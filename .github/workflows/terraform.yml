@@ -1,4 +1,4 @@
-name: "Ops Terra EKS IaaC"
+name: "Ops Terra IaaC"
 on:
     push:
         branches:
@@ -43,7 +43,7 @@ jobs:
               id: tflint
               uses: terraform-linters/setup-tflint@v4
               with:
-                tflint_wrapper_enabled: true
+                tflint_wrapper: true
             - name: TFLint - Run
               run: |
                 tflint --version
