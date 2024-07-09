@@ -1,0 +1,53 @@
+name: "Ops Terra EKS IaaC"
+on:
+    push:
+        branches:
+            - dev
+        paths:
+            - terraform/**
+
+
+
+
+jobs:
+    terraform:
+        name: "Terraform code change applied"
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                shell: bash
+                working-directory: ./terraform
+
+        steps:
+            - name: Source code checkout
+              uses: actions/checkout@v4
+
+            - name: Setup Terraform
+              uses: hashicorp/setup-terraform@v3
+              with:
+                terraform_version: 1.4.6
+
+            - name: Terraform init
+              id: terra_init
+              run: terraform init
+
+            - name: Terraform format
+              id: terra_fmt
+              run: terraform fmt -check
+
+            - name: Terraform validate
+              id: terra_validate
+              run: terraform validate
+
+            - name: TFLint - Setup
+              id: tflint
+              uses: terraform-linters/setup-tflint@v4
+              with:
+                tflint_wrapper_enabled: true
+            - name: TFLint - Run
+              run: |
+                tflint --version
+                tflint --init
+                tflint
+                tflint -f compact
+
