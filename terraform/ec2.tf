@@ -3,6 +3,7 @@ resource "aws_key_pair" "terraform-demo" {
   public_key = file("terraform-demo.pub")
 }
 
+
 resource "aws_instance" "my-instance" {
   count         = var.INSTANCE_COUNT
   ami           = var.AMI[var.REGION]
