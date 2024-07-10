@@ -1,10 +1,4 @@
 terraform/.terraform/
 terraform/.terraform.lock.hcl
-terraform-demo
-terraform-demo.pub
-id_rsa.pub
-id_rsa
-id_dsa.pub
-id_dsa
-*.pem
-*.key
+terraform/terraform-demo
+terraform/terraform-demo.pub
