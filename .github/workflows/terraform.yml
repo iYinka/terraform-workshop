@@ -1,6 +1,6 @@
 name: "Ops Terra IaaC"
 on:
-    push:
+    pull-request:
         branches:
             - dev
         paths:
